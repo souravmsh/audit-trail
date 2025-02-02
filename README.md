@@ -8,7 +8,7 @@
 ---
 <b>Audit Trail</b> is a Laravel package that provides an easy-to-use mechanism for maintaining table row audit logs. It automatically tracks changes to database records, including created, updated, and deleted events, making it easier to monitor data modifications and user activities.
 
-![Preview](public/preview1.png)
+![Preview](public/preview.png)
 
 ## Installation
 You can install the package via Composer:
