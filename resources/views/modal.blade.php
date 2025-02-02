@@ -76,8 +76,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 <table>
                     <tr>
                         <th>Field</th>
-                        <th>Old Value</th>
                         <th>New Value</th>
+                        <th>Old Value</th>
                     </tr>
             `;
 
@@ -86,8 +86,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 dataHtml += `
                     <tr>
                         <td>${key}</td>
-                        <td>${attributes[key]?.old ?? ''}</td>
                         <td>${attributes[key]?.new ?? ''}</td>
+                        <td>${attributes[key]?.old ?? ''}</td>
                     </tr>
                 `;
             }
