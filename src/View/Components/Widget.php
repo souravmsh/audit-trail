@@ -10,10 +10,13 @@ class Widget extends Component
     public string $title;
     public ?int $perPage;
     public ?int $limit;
+    public ?string $type;
     public ?string $modelType;
     public ?string $modelId;
     public ?string $creatorType;
     public ?string $creatorId;
+    public ?string $dateFrom;
+    public ?string $dateTo;
     public bool $showModel;
     public bool $showCreator;
     public object|array|null $result;
@@ -23,6 +26,7 @@ class Widget extends Component
      *
      * @param string|null $title
      * @param int|null $limit
+     * @param string|null $type
      * @param string|null $modelType
      * @param string|null $modelId
      * @param string|null $creatorType
@@ -34,20 +38,26 @@ class Widget extends Component
         string $title = null,
         int $perPage  = 10,
         int $limit    = null,
+        string $type  = null,
         string $modelType = null,
         string $modelId = null,
         string $creatorType = null,
         string $creatorId = null,
+        string $dateFrom = null,
+        string $dateTo   = null,
         bool $showModel = false,
         bool $showCreator = false
     ) {
         $this->title       = $title ?? 'Audit Trail';
         $this->perPage     = $perPage;
         $this->limit       = $limit;
+        $this->type        = $type;
         $this->modelType   = $modelType;
         $this->modelId     = $modelId;
         $this->creatorType = $creatorType;
         $this->creatorId   = $creatorId;
+        $this->dateFrom    = $dateFrom;
+        $this->dateTo      = $dateTo;
         $this->showModel   = filter_var($showModel, FILTER_VALIDATE_BOOLEAN);
         $this->showCreator = filter_var($showCreator, FILTER_VALIDATE_BOOLEAN);
 
@@ -57,10 +67,13 @@ class Widget extends Component
             'limit'         => $this->limit,
             'show_model'    => $this->showModel,
             'show_creator'  => $this->showCreator,
+            'type'          => $this->type,
             'model_type'    => $this->modelType,
             'model_id'      => $this->modelId,
             'creator_type'  => $this->creatorType,
             'creator_id'    => $this->creatorId,
+            'date_from'     => $this->dateFrom,
+            'date_to'       => $this->dateTo,
         ]);
 
     }
