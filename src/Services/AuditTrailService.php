@@ -21,6 +21,10 @@ class AuditTrailService
             $query->with('creator');
         }
 
+        if (!empty($request->type)) {
+            $query->where('type', $request->type);
+        }
+
         if (!empty($request->message)) {
             $query->where('message', 'like', '%' . $request->message . '%');
         }
@@ -41,6 +45,20 @@ class AuditTrailService
             $query->where('creator_id', $request->creator_id);
         }
 
+        if (!empty($request->date_from)) {
+            $fromDateTime = strtotime($request->date_from);
+            $fromDate = date('Y-m-d', $fromDateTime);
+            $fromTime = (date('H:i:s', $fromDateTime) !== '00:00:00') ? date('H:i:s', $fromDateTime) : '00:00:00';
+            $query->where("created_at", '>=', "{$fromDate} {$fromTime}");
+        }
+        
+        if (!empty($request->to_date)) {
+            $toDateTime = strtotime($request->to_date);
+            $toDate = date('Y-m-d', $toDateTime);
+            $toTime = (date('H:i:s', $toDateTime) !== '00:00:00') ? date('H:i:s', $toDateTime) : '23:59:59';
+            $query->where("created_at", '<=', "{$toDate} {$toTime}");
+        }
+        
         $query->orderBy('id', 'desc');
 
         if (!empty($request->limit)) {
@@ -80,10 +98,6 @@ class AuditTrailService
 
     public function saveHistory(string $type, string|object|null $model = null, ?array $data = null, ?string $message = null, ?int $modelId = null): ?object
     {
-        if (empty($data) && empty($message)) {
-            return null;
-        }
-    
         $creator   = auth()->user();
         $userName  = $creator->name ?? 'Unknown User';
     
@@ -106,7 +120,13 @@ class AuditTrailService
             : 'No fields';
         
         // Default message if not provided
-        $message = $message ?? "{$userName} {$type} the fields {$fields} of a record with ID {$modelId} in the {$tableName} table.";
+        $message = $message ?? match ($type) {
+            'CREATED' => "{$userName} added a new record in '{$tableName}' (ID: {$modelId}).\nFields: {$fields}.",
+            'UPDATED' => "{$userName} updated a record in '{$tableName}' (ID: {$modelId}).\nModified fields: {$fields}.",
+            'DELETED' => "{$userName} deleted a record from '{$tableName}' (ID: {$modelId}).",
+            default   => "{$userName} performed an action on '{$tableName}'.",
+        };
+
     
         return app(config('audit-trail.model'))::create([
             'type'         => $type,
