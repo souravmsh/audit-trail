@@ -5,7 +5,7 @@
         @if ($result->onFirstPage())
             <a href="#" disabled>&laquo;</a>
         @else
-            <a href="{{ $result->previousPageUrl() . '&' . http_build_query(request()->all()) }}">&laquo; Prev</a>
+            <a href="{{ $result->previousPageUrl() . '&' . http_build_query(request()->except('page')) }}">&laquo; Prev</a>
         @endif
 
         {{-- Pagination Elements --}}
@@ -14,14 +14,14 @@
             @if ($page == $result->currentPage())
                 <a href="#" class="active">{{ $page }}</a>
             @else
-                <a href="{{ $url . '&' . http_build_query(request()->all()) }}">{{ $page }}</a>
+                <a href="{{ $url . '&' . http_build_query(request()->except('page')) }}">{{ $page }}</a>
             @endif
         @endforeach
         @endif
 
         {{-- Next Page Link --}}
         @if ($result->hasMorePages())
-            <a href="{{ $result->nextPageUrl() . '&' . http_build_query(request()->all()) }}">Next &raquo;</a>
+            <a href="{{ $result->nextPageUrl() . '&' . http_build_query(request()->except('page')) }}">Next &raquo;</a>
         @else
             <a href="#" disabled>&raquo;</a>
         @endif
