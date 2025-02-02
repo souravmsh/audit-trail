@@ -20,7 +20,10 @@ trait AuditTrail
         if ($event === config('audit-trail.events.updated')) {
             $data = self::getChangedAttributes($model);
         } elseif ($event === config('audit-trail.events.created')) {
-            $data = collect($model->getAttributes())->except(self::getIgnoredAttributes($model))->toArray();
+            $rawData = collect($model->getAttributes())->except(self::getIgnoredAttributes($model))->toArray();
+            $data = collect($rawData)->mapWithKeys(function ($value, $key) {
+                return [$key => ['new' => $value]];
+            })->toArray();
         }
 
         $filteredData = self::filterAllowedAttributes($model, $data);
