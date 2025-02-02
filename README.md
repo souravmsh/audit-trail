@@ -1,10 +1,9 @@
 # AuditTrail a Laravel package for managing audit logs
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/souravmsh/compressed-output.svg?style=flat-square)](https://packagist.org/packages/souravmsh/compressed-output)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/souravmsh/compressed-output/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/souravmsh/compressed-output/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/souravmsh/compressed-output/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/souravmsh/compressed-output/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/souravmsh/compressed-output.svg?style=flat-square)](https://packagist.org/packages/souravmsh/compressed-output)
-
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/souravmsh/audit-trail.svg?style=flat-square)](https://packagist.org/packages/souravmsh/audit-trail)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/souravmsh/audit-trail/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/souravmsh/audit-trail/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/souravmsh/audit-trail/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/souravmsh/audit-trail/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/souravmsh/audit-trail.svg?style=flat-square)](https://packagist.org/packages/souravmsh/audit-trail)
 
 ---
 <b>Audit Trail</b> is a Laravel package that provides an easy-to-use mechanism for maintaining table row audit logs. It automatically tracks changes to database records, including created, updated, and deleted events, making it easier to monitor data modifications and user activities.
