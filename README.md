@@ -151,7 +151,7 @@ Parameters:
     show_creator="true" 
 />
 ```
-also, you can pass request parameters
+also, you can pass request query parameters:
 ```html
 
 <x-audit-trail-widget 
