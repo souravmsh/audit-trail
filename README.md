@@ -151,6 +151,23 @@ Parameters:
     show_creator="true" 
 />
 ```
+also, you can pass request parameters
+```html
+
+<x-audit-trail-widget 
+    title="{{ request('title') }}"
+    per_page="{{ request('per_page') ?? 10 }}"
+    type="{{ request('type') }}"
+    model_type="{{ request('model_type') }}"
+    model_id="{{ request('model_id') }}"
+    creator_type="{{ request('creator_type') }}"
+    creator_id="{{ request('creator_id') }}"
+    date_from="{{ request('date_from') }}"
+    date_to="{{ request('date_to') }}"
+    show_model="false" 
+    show_creator="false" 
+/>
+```
 
 #### 5. Adding Custom Styles
 To ensure the audit trail widget looks great, include the custom CSS file in your Blade template. Add the following `<link>` tag to the `<head>` section of your template:
