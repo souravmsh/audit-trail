@@ -1,6 +1,6 @@
 {
     "name": "souravmsh/audit-trail",
-    "description": "Laravel package for managing audit trails and activity logs",
+    "description": "AuditTrail a Laravel package for managing audit logs ",
     "keywords": [
         "souravmsh",
         "laravel",
