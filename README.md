@@ -133,7 +133,7 @@ Parameters:
 To ensure the audit trail widget looks great, include the custom CSS file in your Blade template. Add the following `<link>` tag to the `<head>` section of your template:
 
 ```html
-<link href="{{ asset('vendor/souravmsh/audit-trail/style.css') }}" rel="stylesheet">
+<link href="{{ asset('vendor/audit-trail/stylesheet.css') }}" rel="stylesheet">
 ```
 
 ## Testing
