@@ -73,7 +73,6 @@ Parameters:
 
 ```php
 use Souravmsh\AuditTrail\Facades\AuditTrail;
-
         
 // Supports both array-based calls
 AuditTrail::log([
@@ -94,7 +93,15 @@ AuditTrail::log([
 AuditTrail::log("LOGGEDIN", "A user logged in 2.");
 ```
 
-#### 2. Retrieving Audit History
+#### 2. Access model directly
+```bash
+use Souravmsh\AuditTrail\Models\AuditTrail;
+
+$audit = AuditTrail::find(1);
+
+```
+
+#### 3. Retrieving Audit History
 To fetch the audit log for a specific model:
 
 ```php
@@ -112,7 +119,7 @@ $auditLogs = AuditTrail::history([
 ]);
 ```
 
-#### 3. Blade Component for Displaying Audit Logs:-
+#### 4. Blade Component for Displaying Audit Logs:-
 You can use the built-in Blade component widget to display audit logs in your UI:
 
 Blade Component for Displaying Audit Logs
@@ -145,7 +152,7 @@ Parameters:
 />
 ```
 
-#### 4. Adding Custom Styles
+#### 5. Adding Custom Styles
 To ensure the audit trail widget looks great, include the custom CSS file in your Blade template. Add the following `<link>` tag to the `<head>` section of your template:
 
 ```html
