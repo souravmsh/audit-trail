@@ -11,24 +11,40 @@
 ![Preview](public/preview.png)
 
 ## Installation
-You can install the package via Composer:
+#### 1. You can install the package via Composer:
 
 ```bash
 composer require souravmsh/audit-trail
 ```
 
-Alternatively, you can install it manually:
-
+#### 2. Alternatively, you can install it manually:
+Create directories:
 ```bash
 mkdir -p packages/souravmsh
 cd packages/souravmsh
-
+```
+Clone git repository:
+```bash
 git clone https://github.com/souravmsh/audit-trail.git
-
+```
+Add below lines to laravel/composer.json file:
+```bash
+"repositories": [
+    {
+        "type": "path",
+        "url": "./packages/souravmsh/audit-trail",
+        "options": {
+            "symlink": true
+        }
+    }
+]
+```
+Then,
+```bash
 composer require souravmsh/audit-trail:dev-main
 
 ```
-### Publish and Run Migrations
+#### 3. Publish and Run Migrations
 
 To publish and run the migrations, use:
 
@@ -38,7 +54,7 @@ php artisan audit-trail:install
 This will create the necessary database tables for logging audit records.
 
 ## Usage
-### Logging Audit Data
+#### 1. Logging Audit Data
 
 You can manually log audit records using the <b>AuditTrail</b> facade:
 
@@ -78,7 +94,7 @@ AuditTrail::log([
 AuditTrail::log("LOGGEDIN", "A user logged in 2.");
 ```
 
-### Retrieving Audit History
+#### 2. Retrieving Audit History
 To fetch the audit log for a specific model:
 
 ```php
@@ -96,7 +112,7 @@ $auditLogs = AuditTrail::history([
 ]);
 ```
 
-### Blade Component for Displaying Audit Logs:-
+#### 3. Blade Component for Displaying Audit Logs:-
 You can use the built-in Blade component widget to display audit logs in your UI:
 
 Blade Component for Displaying Audit Logs
@@ -129,7 +145,7 @@ Parameters:
 />
 ```
 
-### Adding Custom Styles
+#### 4. Adding Custom Styles
 To ensure the audit trail widget looks great, include the custom CSS file in your Blade template. Add the following `<link>` tag to the `<head>` section of your template:
 
 ```html
