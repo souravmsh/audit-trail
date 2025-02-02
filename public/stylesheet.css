@@ -1,0 +1,36 @@
+.audit-trail-container{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:#1d1d1f;background-color:#fff;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,0.1);overflow:hidden;max-width:1200px;margin:0 auto;padding:0}
+.audit-trail-container .audit-trail-header{background:#007AFF;color:#fff;padding:10px 15px;display:flex;justify-content:space-between;align-items:center}
+.audit-trail-container .audit-trail-table-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.audit-trail-container h1{font-size:18px!important;font-weight:600;color:#fff;margin:0 0 12px}
+.audit-trail-container .audit-trail-block{display:inline-block;width:100%;margin:3px 0}
+.audit-trail-container .margin-bottom-0{margin-bottom:0}
+.audit-trail-container .float-right{float:right}
+.audit-trail-container .text-right{text-align:right}
+.audit-trail-container .text-green{color:#28a745;font-weight:700}
+.audit-trail-container .text-blue{color:#007bff;font-weight:700}
+.audit-trail-container .text-red{color:#dc3545;font-weight:700}
+.audit-trail-container .text-purple{color:#6f42c1;font-weight:700}
+.audit-trail-container .text-cyan{color:#17a2b8;font-weight:700}
+.audit-trail-container .text-orange{color:#fd7e14;font-weight:700}
+.audit-trail-container .text-teal{color:#20c997;font-weight:700}
+.audit-trail-container .text-yellow{color:#ffc107;font-weight:700}
+.audit-trail-container button{display:inline-flex;align-items:center;justify-content:center;padding:3px 12px;font-size:12px;font-weight:500;color:#007AFF;background:linear-gradient(to bottom,#f0f0f0,#d9d9d9);border:1px solid #bfbfbf;border-radius:8px;box-shadow:0 2px 5px rgba(0,0,0,0.1),inset 0 1px rgba(255,255,255,0.6);text-shadow:0 1px rgba(255,255,255,0.8);cursor:pointer;transition:all .2s ease-in-out;user-select:none}
+.audit-trail-container button:hover{background:linear-gradient(to bottom,#e5e5e5,#c9c9c9);box-shadow:0 3px 6px rgba(0,0,0,0.15),inset 0 1px rgba(255,255,255,0.6)}
+.audit-trail-container button:active{background:linear-gradient(to bottom,#d0d0d0,#bfbfbf);box-shadow:inset 0 2px 4px rgba(0,0,0,0.2);transform:translateY(1px)}
+.audit-trail-container table{width:100%;border-collapse:collapse;border-radius:6px;overflow:hidden;font-size:13px}
+.audit-trail-container table th,.audit-trail-container table td{padding:8px 12px;text-align:left;border-bottom:1px solid #e0e0e0}
+.audit-trail-container table th{background-color:#f8f8f8;font-weight:500;color:#6e6e73}
+.audit-trail-container table tr:hover{background-color:#f8f8f8}
+.audit-trail-container .pagination{display:inline-block;margin-top:12px}
+.audit-trail-container .pagination a{color:#007AFF;float:left;padding:4px 8px;text-decoration:none;transition:background-color .2s;border-radius:4px;margin:0 2px;font-size:12px}
+.audit-trail-container .pagination a.active{background-color:#007AFF;color:#fff}
+.audit-trail-container .pagination a:hover:not(.active){background-color:#f0f0f0}
+.audit-trail-container .audit-trail-modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,0.5);backdrop-filter:blur(5px);justify-content:center;align-items:center}
+.audit-trail-container .audit-trail-modal-content{background-color:#fff;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,0.1);width:500px;max-width:800px;overflow:hidden;animation:fadeIn .3s}
+.audit-trail-container .audit-trail-modal-header{padding:6px 15px;background-color:#f8f8f8;border-bottom:1px solid #e0e0e0;font-size:14px!important;font-weight:500}
+.audit-trail-container .audit-trail-modal-body{padding:12px;font-size:13px;overflow-y:auto;max-height:calc(100vh - 200px)}
+.audit-trail-container .audit-trail-modal-body h3{display:block;font-size:1.17em;margin-block-start:1em;margin-block-end:1em;margin-inline-start:0;margin-inline-end:0;font-weight:700;unicode-bidi:isolate}
+.audit-trail-container .audit-trail-modal-footer{padding:10px 15px;background-color:#f8f8f8;border-top:1px solid #e0e0e0}
+.audit-trail-container .audit-trail-close{color:#666;float:right;font-size:20px;font-weight:700;cursor:pointer}
+.audit-trail-container .audit-trail-close:hover{color:#000}
+@keyframes fadeIn {from{opacity:0}to{opacity:1}}
