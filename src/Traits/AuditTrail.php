@@ -17,9 +17,9 @@ trait AuditTrail
     {
         $data = [];
 
-        if ($event === config('audit-trail.events.updated')) {
+        if ($event == config('audit-trail.events.updated')) {
             $data = self::getChangedAttributes($model);
-        } elseif ($event === config('audit-trail.events.created')) {
+        } elseif ($event == config('audit-trail.events.created')) {
             $rawData = collect($model->getAttributes())->except(self::getIgnoredAttributes($model))->toArray();
             $data = collect($rawData)->mapWithKeys(function ($value, $key) {
                 return [$key => ['new' => $value]];
@@ -28,7 +28,7 @@ trait AuditTrail
 
         $filteredData = self::filterAllowedAttributes($model, $data);
         
-        if (!empty($filteredData) || $event === config('audit-trail.events.deleted')) {
+        if (!empty($filteredData) || $event == config('audit-trail.events.deleted')) {
             \Souravmsh\AuditTrail\Facades\AuditTrail::saveHistory(strtoupper($event), $model, $filteredData);
         }
     }
@@ -43,7 +43,7 @@ trait AuditTrail
             if (array_key_exists($key, $oldAttributes) && !in_array($key, self::getIgnoredAttributes($model))) {
                 $oldValue = $oldAttributes[$key];
 
-                if ((is_numeric($oldValue) && is_numeric($value) && round($oldValue, 8) !== round($value, 8)) || $oldValue !== $value) {
+                if ((is_numeric($oldValue) && is_numeric($value) && round($oldValue, 8) != round($value, 8)) || $oldValue != $value) {
                     $changedData[$key] = ['old' => $oldValue, 'new' => $value];
                 }
             }
