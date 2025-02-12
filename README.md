@@ -55,7 +55,69 @@ php artisan audit-trail:install
 This will create the necessary database tables for logging audit records.
 
 ## Usage
-#### 1. Logging Audit Data
+
+
+### 1. Enable Audit Logging in .env (default true)
+`AUDITTRAIL_ENABLED=true/false`
+
+
+### 2. Using AuditTrail Trait in a Model to Enable Audit Logging
+To enable auditing in a model, open your model file (e.g., User.php) and add the AuditTrail trait.
+
+```php
+<?php
+
+use Souravmsh\AuditTrail\Traits\AuditTrail;
+
+class User extends Authenticatable
+{
+    use AuditTrail;
+
+    /**
+     * Define attributes to be ignored in auditing.
+     * This will merge with the default ignored attributes in `config/audit-trail.php`.
+     * If you don't need to ignore any attributes, you can omit this property.
+     */
+    public $auditTrailIgnoreAttributes = ['email'];
+    
+    /**
+     * Define specific attributes to track.
+     * If this is left blank, all attributes will be tracked except the ignored ones.
+     */
+    public $auditTrailAllowedAttributes = ['name', 'email', 'about'];
+}
+```
+
+### 3. Configure AuditTrail (Optional)
+Modify the `config/audit-trail.php` file to enable or disable logging and configure ignored attributes.
+
+```php
+return [
+    /*
+     * Enable or disable activity logging.
+     * You can manage it using the `.env` file with `AUDITTRAIL_ENABLED=true/false`.
+     */
+    'enabled' => env('AUDITTRAIL_ENABLED', true),
+
+    /*
+     * Configuration for the audit trail table.
+     */
+    'migration' => [
+        'table' => 'audit_trails',  // The name of the table that stores the activity logs
+        'pagination' => 10,  // Number of activities to display per page
+    ],
+
+    /*
+     * Default attributes to be ignored during activity logging.
+     * This prevents logging of sensitive fields.
+     */
+    'ignored_attributes' => [
+        '_token', 'remember_token', 'password', 'created_at', 'updated_at', 'deleted_at',
+    ],
+];
+```
+
+#### 4. Logging Audit Data
 
 You can manually log audit records using the <b>AuditTrail</b> facade:
 
@@ -94,7 +156,7 @@ AuditTrail::log([
 AuditTrail::log("LOGGEDIN", "A user logged in 2.");
 ```
 
-#### 2. Access model directly
+#### 5. Access model directly
 ```bash
 use Souravmsh\AuditTrail\Models\AuditTrail;
 
@@ -102,7 +164,7 @@ $audit = AuditTrail::find(1);
 
 ```
 
-#### 3. Retrieving Audit History
+#### 6. Retrieving Audit History
 To fetch the audit log for a specific model:
 
 ```php
@@ -120,7 +182,7 @@ $auditLogs = AuditTrail::history([
 ]);
 ```
 
-#### 4. Blade Component for Displaying Audit Logs:-
+#### 7. Blade Component for Displaying Audit Logs:-
 You can use the built-in Blade component widget to display audit logs in your UI:
 
 Blade Component for Displaying Audit Logs
@@ -170,7 +232,7 @@ also, you can pass request query parameters:
 />
 ```
 
-#### 5. Adding Custom Styles
+#### 8. Adding Custom Styles
 To ensure the audit trail widget looks great, include the custom CSS file in your Blade template. Add the following `<link>` tag to the `<head>` section of your template:
 
 ```html
