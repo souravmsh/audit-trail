@@ -1,9 +1,12 @@
 {
     "name": "souravmsh/audit-trail",
-    "description": "AuditTrail a Laravel package for managing audit logs ",
+    "description": "AuditTrail a Laravel package for managing audit logs",
+    "version": "1.2.0",
     "keywords": [
         "souravmsh",
         "laravel",
+        "auditable",
+        "audit-log",
         "audit-trail"
     ],
     "homepage": "https://github.com/souravmsh/audit-trail",
@@ -17,11 +20,15 @@
     ],
     "require": {
         "php": "^8.2",
-        "illuminate/contracts": "^10.0 || ^11.0"
+        "illuminate/contracts": "^10.0 || ^11.0 || ^12.0 || ^13.0",
+        "illuminate/support": "^10.0 || ^11.0 || ^12.0 || ^13.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^10.0",
-        "orchestra/testbench": "^8.0"
+        "phpunit/phpunit": "^10.0 || ^11.0",
+        "orchestra/testbench": "^8.0 || ^9.0 || ^10.0 || ^11.0",
+        "pestphp/pest": "^2.0 || ^3.0",
+        "laravel/pint": "^1.0",
+        "phpstan/phpstan": "^1.10"
     },
     "autoload": {
         "psr-4": {
